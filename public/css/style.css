@@ -1,99 +1,22 @@
+body {
+    overflow: hidden;
+}
+
 .full-height {
     height: 100vh;
 }
 
-.flex-center {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
-
-.position-ref {
-    position: relative;
-}
-
-.top-right {
-    position: absolute;
-    right: 10px;
-    top: 18px;
-}
-
-.top-right img {
-    position: absolute;
-    right: 40px;
-    top: -10px;
-    height: 40px;
-    width: 40px;
-}
-
-/* Background */
-.div_background {
-    width: 100%;
-    height: fit-content;
-    position: absolute;
-    bottom: 0;
-}
-
-.background {
-    position: relative;
-    display: block;
-    float: left;
-}
-
-.image_logo {
-    position: relative;
-    margin-top: 25px;
-}
-
-/* login form */
-.container {
-    height: 200px;
-    position: relative;
-    margin-top: 25px;
-}
-
-.center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-
-/* Fields Login*/
-.fieldLogin {
-    background: #FFFFFF;
-    border: 1px solid #EE5656;
-    box-sizing: border-box;
-    width: 200px;
-    height: 40px;
-}
-
-/* Login Button */
-.btn_div {
-    text-align: center;
-}
-
-#login {
-	position: relative;
-	width: 100px;
-	height: 40px;
-    bottom: 0;
-	box-shadow: 2px 4px 1px rgba(0, 0, 0, 0.2);
-	border-radius: 10px;
+.form-login {
     margin-top: 15px;
 }
 
-.btn {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    color: black;
-    cursor: default;
-    text-decoration: unset;
-}
+.bg {
+    background-image: url("../img/background.svg");
+    /* Half height */
+    height: 10%;
 
+    /* Center and scale the image nicely */
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

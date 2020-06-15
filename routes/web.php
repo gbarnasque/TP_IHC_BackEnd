@@ -23,6 +23,9 @@ Route::get('/login', function () {
 
 Route::get('/home', 'HomeController@show')->name('home');
 
+Route::get('/presences', 'PresenceController@index')->name('presences');
+Route::post('/presence/create', 'PresenceController@store')->name('storePresence');
+
 Route::get('/teste', function () {
     $arr = ['message' => 'oi eu sou o gustavo!'];
     return response()->json($arr);
