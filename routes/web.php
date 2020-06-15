@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/login', function () {
+    return view('auth/login');
+})->name('login');
+
+Route::get('/home', 'HomeController@show')->name('home');
 
 Route::get('/teste', function () {
     $arr = ['message' => 'oi eu sou o gustavo!'];
