@@ -20,3 +20,16 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.form-div-create {
+    margin-top: 5em;
+    margin-left: 2em;
+}
+
+.form-div-create select,
+.form-div-create input,
+.form-div-create textarea {
+    width: 30%;
+    margin-bottom: 1em;
+}
+

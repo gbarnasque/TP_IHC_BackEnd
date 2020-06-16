@@ -30,9 +30,5 @@
                 @csrf
             </form>
         </div>
-
-{{--        <div class="div_background">--}}
-{{--            <img class="background" src="{{ asset('img/background.svg?v='.env("ASSETS_VERSION")) }}">--}}
-{{--        </div>--}}
     </body>
 </html>
