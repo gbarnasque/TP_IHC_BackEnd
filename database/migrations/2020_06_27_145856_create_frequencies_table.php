@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePessoa extends Migration
+class CreateFrequenciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreatePessoa extends Migration
      */
     public function up()
     {
-        Schema::create('pessoa', function (Blueprint $table) {
+        Schema::create('frequencies', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->text('note')->nullable();
+            $table->unsignedBigInteger('student_id');
+
+            $table->foreign('student_id')->references('id')->on('users');
         });
     }
 
@@ -26,6 +30,6 @@ class CreatePessoa extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pessoa');
+        Schema::dropIfExists('frequencies');
     }
 }
