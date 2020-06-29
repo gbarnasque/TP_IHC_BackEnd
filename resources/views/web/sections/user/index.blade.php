@@ -11,24 +11,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">Isabela Oliveira</th>
-                    <td>ioliveira@ufrgs.br</td>
-                    <td>Carlos Silveira</td>
-                    <td><a type="button" class="btn" href="#">Edit</a></td>
-                </tr>
-                <tr>
-                    <th scope="row">Jessica Pereira</th>
-                    <td>jessicap@ufrgs.br</td>
-                    <td>Claudia Fernandes</td>
-                    <td><a type="button" class="btn" href="#">Edit</a></td>
-                </tr>
-                <tr>
-                    <th scope="row">João Silva</th>
-                    <td>jsilva@ufrgs.br</td>
-                    <td>Rogério Fagundes</td>
-                    <td><a type="button" class="btn" href="#">Edit</a></td>
-                </tr>
+                @foreach($users as $user)
+                    <tr>
+                        <th scope="row">{{ $user->name }}</th>
+                        <td>{{ $user->email }}</td>
+                        <td> Implementar </td>
+                        <td><a type="button" class="btn" href="#">Edit</a></td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

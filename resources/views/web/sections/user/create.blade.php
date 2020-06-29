@@ -2,7 +2,7 @@
 <div class="row full-height">
     <div class="col">
         <div>
-            <form>
+            <form action="{!! route('storeUser') !!}" method="post">
                 {{ csrf_field() }}
                 <div class="form-group form-div-create">
                     <label for="name">Nome <span style="color: red;">*</span></label>
@@ -35,7 +35,12 @@
                     </div>
 
                     <label for="advisor">Orientador</label>
-                    <input type="text" id="advisor" class="form-control">
+                    <select name="advisor_name" id="advisor_name" class="form-control">
+                        <option value="">:: SELECIONE ::</option>
+                        @foreach($advisors as $advisor)
+                            <option value="{{ $advisor->id }}">{{ $advisor->name . " - " . $advisor->email }}</option>
+                        @endforeach
+                    </select>
 
                     <button type="submit" id="send" class="btn">Registrar</button>
                 </div>
