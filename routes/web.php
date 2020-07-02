@@ -13,12 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@show');
 
+Route::get('/login', function () {
+    return view('auth/login');
+})->name('login');
 
-Route::get('/teste', function () {
-    $arr = ['message' => 'oi eu sou o gustavo!'];
-    return response()->json($arr);
-});
+Route::get('/home', 'HomeController@show')->name('home');
+
+Route::get('/presences', 'PresenceController@index')->name('presences');
+Route::get('/presence/create', 'PresenceController@create')->name('createPresence');
+Route::post('/presence/create', 'PresenceController@store')->name('storePresence');
+
+Route::get('/users', 'UserController@index')->name('users');
+Route::get('/user/create', 'UserController@create')->name('createUser');
+Route::post('/user/create', 'UserController@store')->name('storeUser');
+Route::get('/user/{id}/edit', 'UserController@edit')->name('editUser');
