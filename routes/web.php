@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@show');
+Route::get('/', 'HomeController@index');
 
 Route::get('/login', function () {
     return view('auth/login');
 })->name('login');
 
-Route::get('/home', 'HomeController@show')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/presences', 'PresenceController@index')->name('presences');
 Route::get('/presence/create', 'PresenceController@create')->name('createPresence');
