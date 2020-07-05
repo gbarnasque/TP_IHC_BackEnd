@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Bolsista;
+use App\Orientador;
+use App\Retorno;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +41,73 @@ Route::middleware('api')->post('/user/login', function (Request $request) {
     $fullUrl = $request->fullUrl();
     $ret = ['email' => $email, 'senha' => $senha];
     return response()->json($ret);
+});
+
+
+/*
+** Section: Orientador
+*/
+
+Route::middleware('api')->put('/orientador/insere', function (Request $request) {
+    $orientador = new Orientador;
+    $ret = new Retorno;
+    $ret->sucesso = $orientador->insertOrientador($request->input('nome'), $request->input('email'));
+    $ret->mensagem = 'Orientador cadastrado com sucesso.';
+
+    if(!$ret->sucesso)
+    {
+        $ret->mensagem = 'Não foi possível cadastrar o orientador.';
+    }
+
+    return response()->json((array) $ret);
+});
+
+Route::middleware('api')->delete('/orientador/remove', function (Request $request) {
+    $orientador = new Orientador;
+    $ret = new Retorno;
+    $ret->sucesso = $orientador->deleteById($request->input('id'));
+    $ret->mensagem = 'Orientador removido com sucesso.';
+
+    if(!$ret->sucesso){
+        $ret->mensagem = 'Não foi possível remover o orientador.';
+    }
+
+    return response()->json((array) $ret);
+});
+
+Route::middleware('api')->get('/orientador/todos', function (Request $request) {
+    return response()->json(Orientador::all());
+});
+
+
+
+Route::middleware('api')->put('/bolsista/insere', function (Request $request) {
+    $bolsista = new Bolsista;
+    $ret = new Retorno;
+    $ret->sucesso = $bolsista->insertBolsista($request->input('nome'), $request->input('email'), $request->input('senha'), $request->input('orientador'));
+    $ret->mensagem = 'Bolsista cadastrado com sucesso.';
+
+    if(!$ret->sucesso)
+    {
+        $ret->mensagem = 'Não foi possível cadastrar o bolsista.';
+    }
+
+    return response()->json((array) $ret);
+});
+
+Route::middleware('api')->delete('/bolsista/remove', function (Request $request) {
+    $bolsista = new Bolsista;
+    $ret = new Retorno;
+    $ret->sucesso = $bolsista->deleteById($request->input('id'));
+    $ret->mensagem = 'Bolsista removido com sucesso.';
+
+    if(!$ret->sucesso){
+        $ret->mensagem = 'Não foi possível remover o bolsista.';
+    }
+
+    return response()->json((array) $ret);
+});
+
+Route::middleware('api')->get('/bolsista/todos', function (Request $request) {
+    return response()->json(Bolsista::all());
 });
