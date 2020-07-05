@@ -1,7 +1,5 @@
 <?php
     use App\Bolsista;
-
-    $bolsistas = Bolsista::all();
 ?>
 
 @include('web.layout.header')
@@ -13,9 +11,10 @@
                         <label for="name">Bolsista <span style="color: red;">*</span></label>
                         <select id="name" class="form-control">
                         <?php
-                        foreach($bolsistas as $v){
+                        $bolsistas = Bolsista::all();
+                        foreach($bolsistas as $b){
                             $echo = '<option>';
-                            $echo .= $b->name;
+                            $echo .= $b->nome;
                             $echo .= '</option>';
                             echo $echo;
                         }
