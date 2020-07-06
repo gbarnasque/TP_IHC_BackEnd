@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -13,8 +14,11 @@ class UserController extends Controller
         return view('web/sections/user/index', ['users' => $users]);
     }
 
-    public function create() {
-        return view('web/sections/user/create');
+    public function edit(User $id)
+    {
+        $advisors = User::allAdvisors();
+        $user = User::find($id)->first();
+        return view('web/sections/user/edit', compact('advisors', 'user'));
     }
 
     public function store() {

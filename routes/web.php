@@ -29,3 +29,5 @@ Route::get('/users', 'UserController@index')->name('users');
 Route::get('/user/create', 'UserController@create')->name('createUser');
 Route::post('/user/create', 'UserController@store')->name('storeUser');
 Route::get('/user/{id}/edit', 'UserController@edit')->name('editUser');
+Route::put('/user/{id}/edit', 'UserController@update')->name('updateUser');
+
