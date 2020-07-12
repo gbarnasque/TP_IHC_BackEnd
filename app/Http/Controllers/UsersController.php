@@ -42,6 +42,7 @@ class UsersController extends Controller
         }
         catch (\Exception $exception) {
             Log::alert('Erro ao editar usuário', [$exception]);
+            return redirect()->route('users.index');
         }
     }
 
