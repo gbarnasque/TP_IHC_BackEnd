@@ -7,7 +7,7 @@
 <div class="row full-height">
     <div class="col">
         <div>
-            <form action="{!! route('updateUser') !!}" method="post">
+            <form action="{!! route('users.update', $user->id) !!}" method="post">
                 @method('PUT')
                 {{ csrf_field() }}
                 <div class="form-group form-div-create">

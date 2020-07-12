@@ -25,9 +25,7 @@ Route::get('/presences', 'PresenceController@index')->name('presences');
 Route::get('/presence/create', 'PresenceController@create')->name('createPresence');
 Route::post('/presence/create', 'PresenceController@store')->name('storePresence');
 
-Route::get('/users', 'UserController@index')->name('users');
-Route::get('/user/create', 'UserController@create')->name('createUser');
-Route::post('/user/create', 'UserController@store')->name('storeUser');
-Route::get('/user/{id}/edit', 'UserController@edit')->name('editUser');
-Route::put('/user/{id}/edit', 'UserController@update')->name('updateUser');
+Route::resource('users', 'UsersController')->except([
+    'show'
+]);
 

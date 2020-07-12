@@ -6,7 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class UserController extends Controller
+class UsersController extends Controller
 {
     public function index()
     {
@@ -21,7 +21,28 @@ class UserController extends Controller
         return view('web/sections/user/edit', compact('advisors', 'user'));
     }
 
-    public function store() {
+    public function update(User $id)
+    {
+        try {
+            $user = User::find($id)->first();
+            $data = request()->only(
+                [
+                    'name',
+                    'mail',
+                    'radio_person'
+                ]
+            );
+
+            if($password = request('password')) {
+                $data['password'] = $password;
+            }
+
+            $user->update($data);
+        }
+        catch (\Exception $exception) {
+            Log::alert('Erro ao editar usuário', [$exception]);
+        }
+    }
 
     public function create()
     {

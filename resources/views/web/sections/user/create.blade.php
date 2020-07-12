@@ -7,7 +7,7 @@
 <div class="row full-height">
     <div class="col">
         <div>
-            <form action="{!! route('storeUser') !!}" method="post">
+            <form action="{!! route('users.store') !!}" method="post">
                 {{ csrf_field() }}
                 <div class="form-group form-div-create">
                     <label for="name">Nome <span style="color: red;">*</span></label>

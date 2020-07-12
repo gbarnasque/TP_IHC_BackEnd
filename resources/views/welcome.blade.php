@@ -10,10 +10,10 @@
         </div>
         <div class="col">
             <div class="btn">
-                <a type="button" class="btn btn-outline-dark btn-lg" href="{{ route('createUser') }}">Cadastrar usuário</a>
+                <a type="button" class="btn btn-outline-dark btn-lg" href="{{ route('users.create') }}">Cadastrar usuário</a>
             </div>
             <div class="btn">
-                <a type="button" class="btn btn-outline-dark btn-lg" href="{{ route('users') }}">Listar usuários</a>
+                <a type="button" class="btn btn-outline-dark btn-lg" href="{{ route('users.index') }}">Listar usuários</a>
             </div>
         </div>
     </div>
