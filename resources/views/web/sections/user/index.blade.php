@@ -16,7 +16,7 @@
                         <th scope="row">{{ $user->name }}</th>
                         <td>{{ $user->email }}</td>
                         <td> Implementar </td>
-                        <td><a type="button" class="btn" href="#">Edit</a></td>
+                        <td><a type="button" class="btn" href="{{ route("users.edit", $user->id) }}">Edit</a></td>
                     </tr>
                 @endforeach
                 </tbody>

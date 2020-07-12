@@ -14,22 +14,23 @@ class UsersController extends Controller
         return view('web/sections/user/index', ['users' => $users]);
     }
 
-    public function edit(User $id)
+    public function edit($id)
     {
         $advisors = User::allAdvisors();
-        $user = User::find($id)->first();
+        $user = User::withTrashed()->findOrFail($id);
+
         return view('web/sections/user/edit', compact('advisors', 'user'));
     }
 
-    public function update(User $id)
+    public function update($id)
     {
         try {
-            $user = User::find($id)->first();
+            $user = User::withTrashed()->findOrFail($id)->first();
             $data = request()->only(
                 [
                     'name',
-                    'mail',
-                    'radio_person'
+                    'email',
+                    'person'
                 ]
             );
 
@@ -38,6 +39,7 @@ class UsersController extends Controller
             }
 
             $user->update($data);
+            return redirect()->route('users.index');
         }
         catch (\Exception $exception) {
             Log::alert('Erro ao editar usuário', [$exception]);

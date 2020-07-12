@@ -3,10 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 class User extends Model
 {
+    use SoftDeletes;
+
     const ADMIN = 1;
     const STUDENT = 2;
     const ADVISOR = 3;
