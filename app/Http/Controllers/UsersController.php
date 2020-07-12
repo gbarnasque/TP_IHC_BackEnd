@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class UsersController extends Controller
@@ -56,9 +55,9 @@ class UsersController extends Controller
     {
         $user = new User();
         $user->name = request('name');
-        $user->email = request('mail');
+        $user->email = request('email');
         $user->password = request('password');
-        $user->person = request('radio_person');
+        $user->person = request('person');
 
         $user->save();
 
