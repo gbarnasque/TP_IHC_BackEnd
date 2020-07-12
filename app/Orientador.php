@@ -8,19 +8,20 @@ class Orientador extends Model
 {
     protected $table =  'orientadores';
 
-    public function insertOrientador($nome, $email){
+    public static function insertOrientador($nome, $email){
         if(Orientador::getByEmail($email)){
             return false;
         }
-        $this->nome = $nome;
-        $this->email = $email;
-        $this->save();
+        $orientadorDummy = new Orientador;
+        $orientadorDummy->nome = $nome;
+        $orientadorDummy->email = $email;
+        $orientadorDummy->save();
         return true;
       
     }
 
-    public function deleteById($id){
-        $orientadorDummy = $this->find($id);
+    public static function deleteById($id){
+        $orientadorDummy = Orientador::find($id);
         if($orientadorDummy == null){
             return false;
         }

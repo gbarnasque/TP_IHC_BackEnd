@@ -30,6 +30,7 @@ class CreateBolsistasTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('frequencias');
         Schema::dropIfExists('bolsistas');
     }
 }

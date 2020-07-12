@@ -28,6 +28,7 @@ class CreateOrientadoresTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('bolsistas');
         Schema::dropIfExists('orientadores');
     }
 }

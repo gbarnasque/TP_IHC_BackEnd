@@ -16,8 +16,9 @@ class CreateFrequenciasTable extends Migration
         Schema::create('frequencias', function (Blueprint $table) {
             $table->id();
             $table->foreignId('bolsista_id')->constrained('bolsistas');
-            $table->date('dia');
-            //$table->timestamps();
+            $table->dateTime('data');
+            $table->string("observacao")->nullable();
+            $table->timestamps();
         });
     }
 

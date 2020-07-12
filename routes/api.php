@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Bolsista;
 use App\Orientador;
+use App\Administrador;
+use App\Frequencia;
 use App\Retorno;
 
 /*
@@ -49,9 +51,8 @@ Route::middleware('api')->post('/user/login', function (Request $request) {
 */
 
 Route::middleware('api')->put('/orientador/insere', function (Request $request) {
-    $orientador = new Orientador;
     $ret = new Retorno;
-    $ret->sucesso = $orientador->insertOrientador($request->input('nome'), $request->input('email'));
+    $ret->sucesso = Orientador::insertOrientador($request->input('nome'), $request->input('email'));
     $ret->mensagem = 'Orientador cadastrado com sucesso.';
 
     if(!$ret->sucesso)
@@ -63,13 +64,12 @@ Route::middleware('api')->put('/orientador/insere', function (Request $request) 
 });
 
 Route::middleware('api')->delete('/orientador/remove', function (Request $request) {
-    $orientador = new Orientador;
     $ret = new Retorno;
-    $ret->sucesso = $orientador->deleteById($request->input('id'));
-    $ret->mensagem = 'Orientador removido com sucesso.';
+    $ret->sucesso = Orientador::deleteById($request->input('id'));
+    $ret->mensagem = 'Orientador excluído com sucesso.';
 
     if(!$ret->sucesso){
-        $ret->mensagem = 'Não foi possível remover o orientador.';
+        $ret->mensagem = 'Não foi possível excluir o orientador.';
     }
 
     return response()->json((array) $ret);
@@ -79,12 +79,13 @@ Route::middleware('api')->get('/orientador/todos', function (Request $request) {
     return response()->json(Orientador::all());
 });
 
-
+/*
+** Section: Bolsista
+*/
 
 Route::middleware('api')->put('/bolsista/insere', function (Request $request) {
-    $bolsista = new Bolsista;
     $ret = new Retorno;
-    $ret->sucesso = $bolsista->insertBolsista($request->input('nome'), $request->input('email'), $request->input('senha'), $request->input('orientador'));
+    $ret->sucesso = Bolsista::insertBolsista($request->input('nome'), $request->input('email'), $request->input('senha'), $request->input('orientador'));
     $ret->mensagem = 'Bolsista cadastrado com sucesso.';
 
     if(!$ret->sucesso)
@@ -98,7 +99,7 @@ Route::middleware('api')->put('/bolsista/insere', function (Request $request) {
 Route::middleware('api')->delete('/bolsista/remove', function (Request $request) {
     $bolsista = new Bolsista;
     $ret = new Retorno;
-    $ret->sucesso = $bolsista->deleteById($request->input('id'));
+    $ret->sucesso = Bolsista::deleteById($request->input('id'));
     $ret->mensagem = 'Bolsista removido com sucesso.';
 
     if(!$ret->sucesso){
@@ -110,4 +111,42 @@ Route::middleware('api')->delete('/bolsista/remove', function (Request $request)
 
 Route::middleware('api')->get('/bolsista/todos', function (Request $request) {
     return response()->json(Bolsista::all());
+});
+
+
+/*
+** Section: Administrador
+*/
+
+
+
+/*
+** Section: Frequencia
+*/
+
+Route::middleware('api')->put('/frequencia/insere', function (Request $request) {
+    $ret = new Retorno;
+
+    if(Frequencia::checkFrequenciaExistenteNoDia($request->input('bolsista'))) {
+        $ret->sucesso = false;
+        $ret->mensagem = "O bolsista já possui frequência no dia de hoje.";
+        return response()->json((array) $ret);
+    }
+
+    $ret->sucesso = Frequencia::insertFrequencia($request->input('bolsista'), $request->input('observacao'), new \DateTime('NOW'));
+    $ret->mensagem = 'Frequência cadastrada com sucesso.';
+
+    if(!$ret->sucesso) {
+        $ret->mensagem = 'Não foi possível cadastrar a frequência.';
+    }
+
+    return response()->json((array) $ret);
+});
+
+
+Route::middleware('api')->get('/frequencia/todos', function (Request $request) {
+    $ret = new Retorno;
+    $ret->sucesso = true;
+    $ret->mensagem = Frequencia::all();
+    return response()->json((array) $ret);
 });
