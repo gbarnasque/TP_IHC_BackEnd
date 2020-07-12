@@ -25,7 +25,7 @@ Route::get('/presences', 'PresenceController@index')->name('presences');
 Route::get('/presence/create', 'PresenceController@create')->name('createPresence');
 Route::post('/presence/create', 'PresenceController@store')->name('storePresence');
 
-Route::resource('users', 'UsersController')->except([
+Route::resource('users', 'UserController')->except([
     'show'
 ]);
 
