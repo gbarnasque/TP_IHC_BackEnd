@@ -21,9 +21,7 @@ Route::get('/login', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/presences', 'PresenceController@index')->name('presences');
-Route::get('/presence/create', 'PresenceController@create')->name('createPresence');
-Route::post('/presence/create', 'PresenceController@store')->name('storePresence');
+Route::resource('presences', 'PresenceController');
 
 Route::resource('users', 'UserController')->except([
     'show'

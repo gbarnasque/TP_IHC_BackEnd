@@ -2,10 +2,10 @@
     <div class="row align-items-center full-height text-center">
         <div class="col">
             <div class="btn">
-                <a type="button" class="btn btn-outline-dark btn-lg" href="{{ route('storePresence') }}">Marcar presença</a>
+                <a type="button" class="btn btn-outline-dark btn-lg" href="{{ route('presences.create') }}">Marcar presença</a>
             </div>
             <div class="btn">
-                <a type="button" class="btn btn-outline-dark btn-lg" href="{{ route('presences') }}">Listar presenças</a>
+                <a type="button" class="btn btn-outline-dark btn-lg" href="{{ route('presences.index') }}">Listar presenças</a>
             </div>
         </div>
         <div class="col">
