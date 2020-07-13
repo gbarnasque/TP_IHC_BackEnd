@@ -22,7 +22,7 @@ class User extends Model
         ];
 
     public static function allStudents(){
-        return static::where('person', static::STUDENT)->get();
+        return static::select('id', 'name')->where('person', static::STUDENT)->get();
     }
 
     public static function allAdvisors(){

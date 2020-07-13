@@ -18,8 +18,11 @@ class CreateFrequenciesTable extends Migration
             $table->timestamps();
             $table->text('note')->nullable();
             $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->softDeletes('deleted_at', 0);
 
             $table->foreign('student_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
