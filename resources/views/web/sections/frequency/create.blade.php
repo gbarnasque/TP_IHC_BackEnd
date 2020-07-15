@@ -2,13 +2,14 @@
     <div class="row full-height">
         <div class="col">
             <div>
-                <form>
+                <form action="{{ route('frequencies.store') }}" method="post">
+                    {{ csrf_field() }}
                     <div class="form-group form-div-create">
                         <label for="name">Bolsista <span style="color: red;">*</span></label>
                         <select id="name" class="form-control">
-                            <option>Isabela</option>
-                            <option>Jessica</option>
-                            <option>João</option>
+                            @foreach($students as $student)
+                                <option value="{{ $student->id }}">{{ $student->name }}</option>
+                            @endforeach
                         </select>
 
                         <label for="day">Dia <span style="color: red;">*</span></label>

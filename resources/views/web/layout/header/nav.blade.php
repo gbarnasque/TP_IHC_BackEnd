@@ -9,8 +9,8 @@
     <div class="collapse navbar-collapse" id="textoNavbar">
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="{{ route('home') }}">Home</a>
-            <a class="nav-item nav-link" href="{{ route('presences.create') }}">Marcar Presença</a>
-            <a class="nav-item nav-link" href="{{ route('presences.index') }}">Listar Presenças</a>
+            <a class="nav-item nav-link" href="{{ route('frequencies.create') }}">Marcar Presença</a>
+            <a class="nav-item nav-link" href="{{ route('frequencies.index') }}">Listar Presenças</a>
         </div>
         <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
             <li class="order-2">

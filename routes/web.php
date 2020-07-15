@@ -21,7 +21,7 @@ Route::get('/login', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('presences', 'FrequencyController');
+Route::resource('frequencies', 'FrequencyController');
 
 Route::resource('users', 'UserController')->except([
     'show'

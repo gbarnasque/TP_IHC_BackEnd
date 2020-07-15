@@ -16,12 +16,14 @@ class FrequencyController extends Controller
             $frequencies[$student->id] = Frequency::frequenciesThisWeek($student->id);
         }
 
-        return view('web/sections/presence/index', compact('students', 'frequencies'));
+        return view('web/sections/frequency/index', compact('students', 'frequencies'));
     }
 
     public function create()
     {
-        return view('web/sections/presence/create');
+        $students = User::allStudents();
+
+        return view('web/sections/frequency/create', compact('students'));
     }
 
     public function store()
