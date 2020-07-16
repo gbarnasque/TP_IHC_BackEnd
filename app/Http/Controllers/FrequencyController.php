@@ -11,13 +11,19 @@ class FrequencyController extends Controller
     public function index()
     {
         $students = User::allStudents();
-        $frequencies = [];
+        $all_frequencies = [];
+
 
         foreach ($students as $student) {
-            $frequencies[$student->id] = Frequency::frequenciesThisWeek($student->id);
+            $frequencies = Frequency::frequenciesThisWeek($student->id);
+            $student_frequencies = [];
+            foreach ($frequencies as $frequency) {
+                $student_frequencies[] = Carbon::createFromFormat('Y-m-d H:i:s',$frequency->created_at)->dayOfWeek;
+            }
+            $all_frequencies[$student->id] = $student_frequencies;
         }
 
-        return view('web/sections/frequency/index', compact('students', 'frequencies'));
+        return view('web/sections/frequency/index', compact('students', 'all_frequencies'));
     }
 
     public function create()
