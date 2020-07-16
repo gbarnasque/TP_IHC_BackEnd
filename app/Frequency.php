@@ -13,7 +13,9 @@ class Frequency extends Model
     protected $fillable = [
         'note',
         'student_id',
-        'user_id'
+        'user_id',
+        'created_at',
+        'updated_at'
     ];
 
     public static function frequenciesThisWeek($id){
