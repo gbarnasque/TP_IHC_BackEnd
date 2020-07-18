@@ -14,28 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('login', 'Api\UserController@login');
+Route::post('register', 'Api\UserController@register');
 
-
-Route::middleware('api')->post('/user/login', function (Request $request) {
-    if($request->input('senha') == "1111"){
-        $ret = ['status' => 'H4CK3D', 'message' => 'Usuário logado com sucesso!'];
-    }
-    else{
-        $ret = ['status' => 'OK', 'message' => 'Usuário logado com sucesso!'];
-    }
-   
-    return response()->json($ret);
-
-    //Lógica de validar usuário no banco
-
-
-    $email = $request->input('email');
-    $senha = $request->input('senha');
-
-    $fullUrl = $request->fullUrl();
-    $ret = ['email' => $email, 'senha' => $senha];
-    return response()->json($ret);
+Route::group(['middleware' => 'auth:api'], function(){
+    Route::resource('frequencies', 'Api\FrequencyController');
 });

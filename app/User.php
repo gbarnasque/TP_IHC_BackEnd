@@ -2,13 +2,14 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Passport\HasApiTokens;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
-class User extends Model
+class User extends Authenticatable
 {
-    use SoftDeletes;
+    use SoftDeletes, HasApiTokens;
 
     const ADMIN = 1;
     const STUDENT = 2;
