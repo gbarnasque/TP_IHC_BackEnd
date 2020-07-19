@@ -19,11 +19,14 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->unsignedTinyInteger('person');
+            $table->unsignedBigInteger('advisor_id')->nullable();
             $table->string('api_token', 80)->unique()
                 ->nullable()
                 ->default(null);
             $table->timestamps();
             $table->softDeletes('deleted_at', 0);
+
+            $table->foreign('advisor_id')->references('id')->on('users');
         });
     }
 

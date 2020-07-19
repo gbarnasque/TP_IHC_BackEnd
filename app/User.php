@@ -19,7 +19,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'person'
+        'person',
+        'advisor_id'
         ];
 
     public static function allStudents(){

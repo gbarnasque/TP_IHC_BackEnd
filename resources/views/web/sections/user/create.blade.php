@@ -40,7 +40,7 @@
                     </div>
 
                     <label for="advisor">Orientador</label>
-                    <select name="advisor_name" id="advisor_name" class="form-control">
+                    <select name="advisor_id" id="advisor_name" class="form-control">
                         <option value="">:: SELECIONE ::</option>
                         @foreach($advisors as $advisor)
                             <option value="{{ $advisor->id }}">{{ $advisor->name . " - " . $advisor->email }}</option>

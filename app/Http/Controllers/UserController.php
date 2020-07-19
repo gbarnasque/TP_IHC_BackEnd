@@ -30,7 +30,8 @@ class UserController extends Controller
                 [
                     'name',
                     'email',
-                    'person'
+                    'person',
+                    'advisor_id'
                 ]
             );
 
@@ -60,6 +61,7 @@ class UserController extends Controller
         $user->email = request('email');
         $user->password = Hash::make(request('password'));
         $user->person = request('person');
+        $user->advisor_id = request('advisor_id');
 
         $user->save();
 
