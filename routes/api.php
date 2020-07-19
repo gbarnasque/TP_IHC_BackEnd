@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', 'Api\UserController@login');
 Route::post('register', 'Api\UserController@register');
 
+Route::post('frequencies', 'Api\FrequencyController@index');
+Route::post('frequencies/store', 'Api\FrequencyController@store');
+
+Route::post('details', 'Api\UserController@details');
+
 Route::group(['middleware' => 'auth:api'], function(){
-    Route::resource('frequencies', 'Api\FrequencyController');
+
 });

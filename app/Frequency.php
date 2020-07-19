@@ -26,4 +26,12 @@ class Frequency extends Model
         return static::where('student_id', $id)->whereBetween('created_at', [$weekStartDate, $weekEndDate])->get();
     }
 
+    public static function frequenciesThisMonth($id){
+        $now = Carbon::now();
+        $monthStartDate = $now->startOfMonth()->toDateTimeString();
+        $monthEndDate = $now->endOfMonth()->toDateTimeString();
+
+        return static::where('student_id', $id)->whereBetween('created_at', [$monthStartDate, $monthEndDate])->get();
+    }
+
 }

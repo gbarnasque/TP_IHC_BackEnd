@@ -15,8 +15,9 @@ class UserController extends Controller
 
     /**
      * login api
+     * @param Request
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function login(Request $request)
     {
@@ -32,8 +33,9 @@ class UserController extends Controller
 
     /**
      * Register api
+     * @param Request
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function register(Request $request)
     {
@@ -45,7 +47,7 @@ class UserController extends Controller
             'person' => 'required|integer',
         ]);
         if ($validator->fails()) {
-            return response()->json(['error'=>$validator->errors()], 401);
+            return response()->json(['error'=>$validator->errors()], 400);
         }
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
