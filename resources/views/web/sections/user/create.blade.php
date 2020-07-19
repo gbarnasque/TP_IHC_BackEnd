@@ -1,8 +1,10 @@
 @include('web.layout.header')
 <div class="row">
-    <h2>
-        Novo Usuário
-    </h2>
+    <div class="col">
+        <h2 class="title">
+            Novo Usuário
+        </h2>
+    </div>
 </div>
 <div class="row full-height">
     <div class="col">

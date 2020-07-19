@@ -22,7 +22,7 @@ body {
 }
 
 .form-div-create {
-    margin-top: 5em;
+    margin-top: 2em;
     margin-left: 2em;
 }
 
@@ -33,3 +33,7 @@ body {
     margin-bottom: 1em;
 }
 
+.title {
+    margin-left: 20px;
+    margin-top: 20px;
+}
